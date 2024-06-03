@@ -1,0 +1,46 @@
+.footer {
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-right: 8px;
+    position: relative;
+    left: 100px;
+    top: 50px;
+    width: fit-content;
+    .logo_circle1 {
+      width: 30px;
+      height: 30px;
+      background-color: var(--black);
+      border-radius: 50%;
+    }
+    .logo_circle2 {
+      width: 20px;
+      height: 20px;
+      background-color: var(--violet);
+      border-radius: 50%;
+    }
+  }
+  .footer_innerContainer {
+    display: flex;
+    justify-content: space-around;
+    width: 900px;
+    margin: auto;
+    line-height: 2.5;
+    .footer_list_container {
+      .footer_list_header {
+        font-weight: 500;
+        font-size: 1.5rem;
+      }
+    }
+  }
+  .footer_downloadOptions {
+    position: relative;
+    left: 364px;
+    width: fit-content;
+    display: flex;
+    gap: 32px;
+    margin-top: 48px;
+    margin-bottom: 48px;
+  }
+}

@@ -1,0 +1,66 @@
+.form-container {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 600px;
+  margin: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400;
+}
+
+.form-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+
+  h2 {
+    margin: 0;
+    font-size: 1.5rem;
+  }
+
+  .close-button {
+    margin-right: -12px;
+  }
+}
+
+.form-content {
+  display: flex;
+  flex-direction: column;
+
+  .form-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+
+    .form-label {
+      flex: 1;
+      margin-right: 20px;
+      font-size: 1rem;
+      font-weight: bold;
+      color: var(--black);
+    }
+
+    .MuiFormControl-root {
+      flex: 2;
+    }
+  }
+
+  .add-button {
+    align-self: flex-start;
+    background-color: var(--violet);
+    border-radius: 25px;
+    font-weight: 400;
+    text-transform: none;
+    color: #fff;
+    &:hover {
+      background-color: var(--darkviolet);
+    }
+  }
+}

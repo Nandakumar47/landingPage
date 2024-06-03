@@ -1,0 +1,90 @@
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  font-size: 1rem;
+  font-weight: 400;
+  background-color: white;
+  border-bottom: 1px solid rgba(234, 232, 232, 0.597);
+  font-family: var(--font-family);
+  .navbar_firstContainer {
+    display: flex;
+    justify-content: center;
+    ul {
+      list-style-type: none;
+      display: flex;
+      gap: 4rem;
+      li {
+        text-decoration: none;
+        a {
+          text-decoration: none;
+          color: var(--black);
+        }
+      }
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin-right: 8px;
+      .logo_circle1 {
+        width: 20px;
+        height: 20px;
+        background-color: var(--black);
+        border-radius: 50%;
+      }
+      .logo_circle2 {
+        width: 10px;
+        height: 10px;
+        background-color: var(--violet);
+        border-radius: 50%;
+      }
+    }
+  }
+  .navbar_secondContainer {
+    display: flex;
+    gap: 8px;
+    .secondary_button {
+      padding: 8px 16px;
+      background-color: white;
+      border-radius: 25px;
+      border: none;
+      cursor: pointer;
+    }
+    .primary_button {
+      padding: 8px 16px;
+      background-color: var(--violet);
+      border-radius: 25px;
+      border: none;
+      cursor: pointer;
+      color: white;
+      &:hover {
+        background-color: var(--darkviolet);
+      }
+    }
+    .search-bar {
+      display: flex;
+      align-items: center;
+      border: 1px solid #ccc;
+      border-radius: 25px;
+      padding: 0.5rem 1rem;
+      width: 300px;
+      background-color: #fff;
+
+      .search-icon {
+        //   color: #aaa;
+        margin-right: 0.5rem;
+      }
+      input {
+        border: none;
+        outline: none;
+        flex: 1;
+        font-size: 1rem;
+        &::placeholder {
+          color: #aaa;
+        }
+      }
+    }
+  }
+}

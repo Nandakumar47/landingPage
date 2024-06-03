@@ -1,0 +1,62 @@
+.creatorHome_container {
+  .creatorHome_TableSection {
+    width: 1000px;
+    margin: 64px auto;
+    padding-bottom: 64px;
+    .creator_table_loadMore_container {
+      display: flex;
+      justify-content: center;
+      .creator_table_loadMore {
+        border: none;
+        padding: 8px 16px;
+        margin-top: 32px;
+        background-color: #2222220d;
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+      }
+    }
+    .creator_table_container {
+      position: relative;
+      .customTableCell {
+        color: #717171;
+        font-weight: 400;
+      }
+      .action_tableCell {
+        display: flex;
+        align-items: center;
+        justify-content: end;
+        gap: 4px;
+        .action_edit_button {
+          background-color: #ebebeb99;
+          padding: 8px 16px;
+          border: none;
+          border-radius: 20px;
+          cursor: pointer;
+        }
+      }
+    }
+    .creator_table_header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .creator_table_heading {
+        font-weight: 600;
+        font-size: 1.4rem;
+      }
+      .creator_table_addCreator {
+        border: none;
+        background-color: var(--violet);
+        padding: 8px 16px;
+        color: white;
+        border-radius: 25px;
+        cursor: pointer;
+        &:hover {
+          background-color: var(--darkviolet);
+        }
+      }
+      margin-bottom: 32px;
+    }
+  }
+}

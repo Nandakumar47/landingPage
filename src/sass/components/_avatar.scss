@@ -1,0 +1,12 @@
+.imageContainer {
+  padding: 2px;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--blue);
+  .userImage {
+    width: 25px;
+    height: 25px;
+  }
+}

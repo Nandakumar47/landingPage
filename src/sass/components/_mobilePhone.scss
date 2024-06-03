@@ -1,0 +1,135 @@
+.phone_container {
+  height: 400px;
+  width: 196px;
+  padding: 8px;
+  background-color: white;
+  border: solid 8px var(--black);
+  border-radius: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  .userContainer {
+    padding-left: 6px;
+    padding-top: 6px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    .nameAndStatus {
+      display: flex;
+      flex-direction: column;
+      font-size: 0.6rem;
+      .name {
+        font-weight: 500;
+      }
+      .status {
+        font-size: 0.5rem;
+      }
+    }
+    // .imageContainer {
+    //   padding: 2px;
+    //   border-radius: 100%;
+    //   display: flex;
+    //   justify-content: center;
+    //   align-items: center;
+    //   background-color: var(--blue);
+    //   .userImage {
+    //     width: 25px;
+    //     height: 25px;
+    //   }
+    // }
+  }
+  .firstChat {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    .firstChat_text {
+      background-color: var(--yellow);
+      padding: 8px 12px;
+      border-radius: 25px;
+      width: fit-content;
+      text-align: center;
+      p {
+        margin: 0;
+        font-size: 0.7rem;
+        font-weight: 500;
+      }
+    }
+    .firstChat_timeStamp {
+      color: grey;
+      p {
+        margin: 0;
+        font-size: 0.6rem;
+      }
+    }
+  }
+  .secondChat {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: end;
+    .secondChat_text {
+      background-color: var(--violet);
+      color: white;
+      padding: 8px 12px;
+      border-radius: 25px;
+      width: fit-content;
+      text-align: center;
+      p {
+        margin: 0;
+        font-size: 0.7rem;
+        font-weight: 500;
+      }
+    }
+    .secondChat_timeStamp {
+      color: grey;
+      p {
+        margin: 0;
+        font-size: 0.6rem;
+      }
+    }
+  }
+  .thirdChat {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    .thirdChat_audio {
+      background-color: var(--yellow);
+      width: fit-content;
+      padding: 8px 12px;
+      display: flex;
+      align-items: center;
+      border-radius: 25px;
+      .sound-wave {
+        display: flex;
+        align-items: center;
+        height: 20px;
+        margin-left: 8px;
+        .bar {
+          width: 4px;
+          background-color: black;
+          margin: 0 1px;
+          border-radius: 25px;
+          &:nth-last-child(-n + 8) {
+            background-color: rgba(128, 128, 128, 0.453);
+          }
+        }
+      }
+    }
+    .thirdChat_timeStamp {
+      color: grey;
+      p {
+        margin: 0;
+        font-size: 0.6rem;
+      }
+    }
+  }
+  .bagImage_container {
+    display: flex;
+    justify-content: end;
+    .bagImage {
+      width: 150px;
+      height: 115px;
+      border-radius: 10px;
+    }
+  }
+}

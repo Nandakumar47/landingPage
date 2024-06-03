@@ -1,0 +1,47 @@
+.carousel_container {
+  display: flex;
+  overflow-x: hidden;
+  white-space: nowrap;
+  width: 100%;
+  position: relative;
+  .card_container {
+    position: relative;
+    width: 264px;
+    height: 320px;
+    flex: 0 0 auto;
+    margin-right: 10px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 10px;
+    box-sizing: border-box;
+    display: inline-block;
+    .card_container_userName {
+      position: absolute;
+      bottom: 16px;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: white;
+      background-color: #6a676742;
+      padding: 8px;
+      border-radius: 8px;
+    }
+    .card_container_status {
+      position: absolute;
+      background-color: white;
+      padding: 4px 8px;
+      border-radius: 12px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 4px;
+      right: 8px;
+      font-size: 0.8rem;
+      .card_container_indicator {
+        width: 8px;
+        height: 8px;
+        border-radius: 100%;
+      }
+    }
+  }
+}
