@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import CreatorTable from "./CreatorTable";
-import EditModal from "./EditModal";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { Alert, Snackbar } from "@mui/material";
+const CreatorTable = React.lazy(() => import("./CreatorTable"));
+const EditModal = React.lazy(() => import("./EditModal"));
 function CreatorHome() {
   const [userDetails, setUserDetails] = useState([]);
   const [showEditModal, setShowEditModal] = useState(false);
