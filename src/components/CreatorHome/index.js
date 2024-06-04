@@ -144,6 +144,7 @@ function CreatorHome() {
               gender: "male",
               status: "active",
             });
+            setErrorMessages({});
             setShowEditModal(false);
           }}
           saveCreator={saveCreator}
