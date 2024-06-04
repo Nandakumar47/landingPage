@@ -13,6 +13,7 @@ function CreatorHome() {
     gender: "male",
     status: "active",
   });
+  const [errorMessages, setErrorMessages] = useState(null);
   useEffect(() => {
     getUserDetails();
   }, [itemsPerPage]);
@@ -27,14 +28,27 @@ function CreatorHome() {
         },
         // body: JSON.stringify(creatorDetails),
       });
+      debugger;
       const result = await response.json();
-      setCreatorDetails({
-        name: "",
-        email: "",
-        gender: "male",
-        status: "active",
-      });
-      setShowEditModal(false);
+      if (response.status === 201) {
+        setCreatorDetails({
+          name: "",
+          email: "",
+          gender: "male",
+          status: "active",
+        });
+        setShowEditModal(false);
+      } else if (response.status === 422) {
+        const errorMessages = {};
+        result?.forEach((item) => {
+          if (item.field === "email") {
+            errorMessages.email = item.message;
+          } else if (item.field === "name") {
+            errorMessages.name = item.message;
+          }
+        });
+        setErrorMessages(errorMessages);
+      }
       console.log({ result });
     } catch (error) {}
   };
@@ -135,6 +149,8 @@ function CreatorHome() {
           saveCreator={saveCreator}
           creatorDetails={creatorDetails}
           handleCreatorDetailsEdit={handleCreatorDetailsEdit}
+          errorMessages={errorMessages}
+          setErrorMessages={setErrorMessages}
         />
       ) : null}
     </div>

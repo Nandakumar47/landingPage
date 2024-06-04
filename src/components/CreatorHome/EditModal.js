@@ -32,6 +32,8 @@ function EditModal(props) {
     creatorDetails,
     saveCreator,
     handleCreatorDetailsEdit,
+    errorMessages,
+    setErrorMessages,
   } = props;
 
   return (
@@ -60,11 +62,17 @@ function EditModal(props) {
                 placeholder="Name"
                 variant="outlined"
                 fullWidth
-                value={creatorDetails.name}
+                error={Boolean(errorMessages) && errorMessages?.name?.length}
+                helperText={errorMessages?.name}
+                value={creatorDetails?.name}
                 margin="normal"
-                onChange={(evt) =>
-                  handleCreatorDetailsEdit("name", evt.target.value)
-                }
+                onChange={(evt) => {
+                  setErrorMessages((prev) => ({
+                    ...prev,
+                    name: "",
+                  }));
+                  handleCreatorDetailsEdit("name", evt.target.value);
+                }}
               />
             </div>
             <div className="form-row">
@@ -73,11 +81,17 @@ function EditModal(props) {
                 placeholder="Email"
                 variant="outlined"
                 fullWidth
-                value={creatorDetails.email}
+                error={Boolean(errorMessages) && errorMessages?.email?.length}
+                helperText={errorMessages?.email}
+                value={creatorDetails?.email}
                 margin="normal"
-                onChange={(evt) =>
-                  handleCreatorDetailsEdit("email", evt.target.value)
-                }
+                onChange={(evt) => {
+                  setErrorMessages((prev) => ({
+                    ...prev,
+                    email: "",
+                  }));
+                  handleCreatorDetailsEdit("email", evt.target.value);
+                }}
               />
             </div>
             <div className="form-row">
