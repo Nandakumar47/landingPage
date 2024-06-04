@@ -139,6 +139,7 @@ function CreatorHome() {
         <div className="creator_table_header">
           <div className="creator_table_heading">Manage creators</div>
           <button
+            aria-label="Button to add Creator"
             className="creator_table_addCreator"
             onClick={() => setShowEditModal(true)}
           >
@@ -157,6 +158,7 @@ function CreatorHome() {
         <div className="creator_table_loadMore_container">
           <button
             className="creator_table_loadMore"
+            aria-label="Button to load more number of creators"
             onClick={() => {
               setItemsPerPage((prev) => prev + 5);
             }}

@@ -147,6 +147,7 @@ function EditModal(props) {
             <Button
               variant="contained"
               color="primary"
+              aria-label="Button to add/save Creator"
               className="add-button"
               onClick={() => {
                 saveCreator();

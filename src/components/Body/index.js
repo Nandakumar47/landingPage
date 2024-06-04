@@ -22,7 +22,9 @@ const Body = () => {
             className="phoneNumber_input"
             placeholder="Enter your phone number"
           />
-          <button className="phoneNumber_button">Get started</button>
+          <button className="phoneNumber_button" aria-label="Get started">
+            Get started
+          </button>
         </div>
       </div>
       <div className="third_container">
@@ -69,7 +71,7 @@ const Body = () => {
             maxime
           </div>
           <div className="learnMore">
-            <button>
+            <button aria-label="Learn more">
               Learn more <EastSharpIcon />
             </button>
           </div>
@@ -127,7 +129,7 @@ const Body = () => {
           </div>
           <div className="fifth_container_button_container">
             <div className="fifth_container_button">
-              <button>
+              <button aria-label="Learn more">
                 Learn more <EastSharpIcon />
               </button>
             </div>
@@ -153,7 +155,7 @@ const Body = () => {
           </div>
           <div className="sixth_container_button_container">
             <div className="sixth_container_button">
-              <button>
+              <button aria-label="Learn more">
                 Learn more <EastSharpIcon />
               </button>
             </div>

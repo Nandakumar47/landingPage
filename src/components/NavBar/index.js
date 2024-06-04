@@ -28,8 +28,12 @@ const NavBar = (props) => {
       {!isAdmin ? (
         <div className="navbar_secondContainer">
           <SearchBar />
-          <button className="secondary_button">Sign in</button>
-          <button className="primary_button">Sign up</button>
+          <button aria-label="Button to sign in" className="secondary_button">
+            Sign in
+          </button>
+          <button aria-label="Button to sign up" className="primary_button">
+            Sign up
+          </button>
         </div>
       ) : (
         <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>

@@ -24,7 +24,10 @@ export default function CreatorTable(props) {
   };
   return (
     <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
+      <Table
+        sx={{ minWidth: 650 }}
+        aria-label="Table for showing the creator list"
+      >
         <TableHead>
           <TableRow>
             <TableCell className="customTableCell">Name</TableCell>
@@ -67,6 +70,7 @@ export default function CreatorTable(props) {
                 <TableCell align="right">
                   <div className="action_tableCell">
                     <button
+                      aria-label="Button to edit creator"
                       className="action_edit_button"
                       onClick={() => {
                         onClickOfEdit(row);
