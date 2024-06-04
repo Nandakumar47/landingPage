@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import CreatorTable from "./CreatorTable";
-import { Button } from "@mui/material";
-import AddIcon from "@mui/icons-material/Add";
 import EditModal from "./EditModal";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 function CreatorHome() {
