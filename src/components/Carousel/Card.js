@@ -5,7 +5,6 @@ function capitalizeFirstLetter(string) {
 }
 function Card(props) {
   const { name, gender, status } = props;
-  console.log(props);
   return (
     <div
       className="card_container"
