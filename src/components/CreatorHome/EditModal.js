@@ -10,6 +10,8 @@ import {
   Select,
   MenuItem,
   IconButton,
+  Backdrop,
+  CircularProgress,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 
@@ -34,6 +36,8 @@ function EditModal(props) {
     handleCreatorDetailsEdit,
     errorMessages,
     setErrorMessages,
+    isDataFetching,
+    showEditModal,
   } = props;
 
   return (
@@ -63,7 +67,9 @@ function EditModal(props) {
                 variant="outlined"
                 fullWidth
                 error={Boolean(errorMessages) && errorMessages?.name?.length}
-                helperText={errorMessages?.name}
+                helperText={
+                  errorMessages?.name && `Name ${errorMessages?.name}`
+                }
                 value={creatorDetails?.name}
                 margin="normal"
                 onChange={(evt) => {
@@ -82,7 +88,9 @@ function EditModal(props) {
                 variant="outlined"
                 fullWidth
                 error={Boolean(errorMessages) && errorMessages?.email?.length}
-                helperText={errorMessages?.email}
+                helperText={
+                  errorMessages?.email && `Email ${errorMessages?.email}`
+                }
                 value={creatorDetails?.email}
                 margin="normal"
                 onChange={(evt) => {
@@ -147,6 +155,13 @@ function EditModal(props) {
               + Add creator
             </Button>
           </form>
+          <Backdrop
+            sx={{ color: "#fff", zIndex: 999 }}
+            open={Boolean(isDataFetching && showEditModal)}
+            onClick={() => {}}
+          >
+            <CircularProgress color="inherit" />
+          </Backdrop>
         </div>
       </Modal>
     </div>

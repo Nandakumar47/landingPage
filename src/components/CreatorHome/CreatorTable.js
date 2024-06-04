@@ -44,53 +44,64 @@ export default function CreatorTable(props) {
         </TableHead>
 
         <TableBody>
-          {userDetails?.length
-            ? userDetails.map((row) => (
-                <TableRow
-                  key={row.name}
-                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-                >
-                  <TableCell component="th" scope="row">
-                    {row.name}
-                  </TableCell>
-                  <TableCell align="left">{row.email}</TableCell>
-                  <TableCell align="left">{row.gender}</TableCell>
-                  <TableCell align="left">
-                    <p
-                      style={{
-                        color: row.status === "active" ? "green" : "red",
+          {userDetails?.length && !isDataFetching ? (
+            userDetails.map((row) => (
+              <TableRow
+                key={row.name}
+                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+              >
+                <TableCell component="th" scope="row">
+                  {row.name}
+                </TableCell>
+                <TableCell align="left">{row.email}</TableCell>
+                <TableCell align="left">{row.gender}</TableCell>
+                <TableCell align="left">
+                  <p
+                    style={{
+                      color: row.status === "active" ? "green" : "red",
+                    }}
+                  >
+                    {capitalizeFirstLetter(row.status)}
+                  </p>
+                </TableCell>
+                <TableCell align="right">
+                  <div className="action_tableCell">
+                    <button
+                      className="action_edit_button"
+                      onClick={() => {
+                        onClickOfEdit(row);
                       }}
                     >
-                      {capitalizeFirstLetter(row.status)}
-                    </p>
-                  </TableCell>
-                  <TableCell align="right">
-                    <div className="action_tableCell">
-                      <button
-                        className="action_edit_button"
-                        onClick={() => {
-                          onClickOfEdit(row);
-                        }}
-                      >
-                        Edit
-                      </button>
-                      <IconButton
-                        aria-label="delete"
-                        onClick={() => {
-                          setUserDetailsToDelete({
-                            id: row?.id,
-                            name: row.name,
-                          });
-                          setShowDeleteDialog(true);
-                        }}
-                      >
-                        <DeleteIcon />
-                      </IconButton>
-                    </div>
-                  </TableCell>
-                </TableRow>
-              ))
-            : null}
+                      Edit
+                    </button>
+                    <IconButton
+                      aria-label="delete"
+                      onClick={() => {
+                        setUserDetailsToDelete({
+                          id: row?.id,
+                          name: row.name,
+                        });
+                        setShowDeleteDialog(true);
+                      }}
+                    >
+                      <DeleteIcon />
+                    </IconButton>
+                  </div>
+                </TableCell>
+              </TableRow>
+            ))
+          ) : (
+            <TableRow>
+              <TableCell colSpan={5}>
+                <Skeleton
+                  animation="wave"
+                  variant="rectangular"
+                  width="100%"
+                  height={400}
+                />
+              </TableCell>
+            </TableRow>
+          )}
         </TableBody>
       </Table>
       {showDeleteDialog ? (
@@ -105,14 +116,14 @@ export default function CreatorTable(props) {
           }}
         />
       ) : null}
-      {isDataFetching && (
+      {/* {isDataFetching && (
         <Skeleton
           animation="wave"
           variant="rectangular"
           width="100%"
           height={400}
         />
-      )}
+      )} */}
     </TableContainer>
   );
 }

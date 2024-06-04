@@ -2,11 +2,18 @@ import React, { useEffect, useState } from "react";
 import CreatorTable from "./CreatorTable";
 import EditModal from "./EditModal";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import { Alert, Snackbar } from "@mui/material";
 function CreatorHome() {
   const [userDetails, setUserDetails] = useState([]);
   const [showEditModal, setShowEditModal] = useState(false);
   const [isDataFetching, setIsDataFetching] = useState(false);
+  const [isSavingCreator, setIsSavingCreator] = useState(false);
   const [itemsPerPage, setItemsPerPage] = useState(5);
+  const [alertMessageDetails, setAlertMessageDetails] = useState({
+    showMessage: false,
+    message: "",
+    severity: "",
+  });
   const [creatorDetails, setCreatorDetails] = useState({
     name: "",
     email: "",
@@ -19,6 +26,7 @@ function CreatorHome() {
   }, [itemsPerPage]);
   const saveCreator = async () => {
     try {
+      setIsSavingCreator(true);
       const url = `https://gorest.co.in/public/v2/users?email=${creatorDetails.email}&name=${creatorDetails.name}&gender=${creatorDetails.gender}&status=${creatorDetails.status}`;
       const response = await fetch(url, {
         method: "POST",
@@ -29,6 +37,7 @@ function CreatorHome() {
         // body: JSON.stringify(creatorDetails),
       });
       debugger;
+      setIsSavingCreator(false);
       const result = await response.json();
       if (response.status === 201) {
         setCreatorDetails({
@@ -36,6 +45,11 @@ function CreatorHome() {
           email: "",
           gender: "male",
           status: "active",
+        });
+        setAlertMessageDetails({
+          showMessage: true,
+          message: "successfully saved the creator",
+          severity: "success",
         });
         setShowEditModal(false);
       } else if (response.status === 422) {
@@ -50,7 +64,13 @@ function CreatorHome() {
         setErrorMessages(errorMessages);
       }
       console.log({ result });
-    } catch (error) {}
+    } catch (error) {
+      setAlertMessageDetails({
+        showMessage: true,
+        message: "something went wrong while fetching the details",
+        severity: "failure",
+      });
+    }
   };
   const getUserDetails = async () => {
     setUserDetails([]);
@@ -66,6 +86,11 @@ function CreatorHome() {
     } catch (error) {
       console.log({ error });
       setUserDetails([]);
+      setAlertMessageDetails({
+        showMessage: true,
+        message: "something went wrong while fetching the details",
+        severity: "failure",
+      });
     }
   };
   const deleteUser = async (userId) => {
@@ -81,6 +106,11 @@ function CreatorHome() {
       console.log(result);
       getUserDetails();
     } catch (error) {
+      setAlertMessageDetails({
+        showMessage: true,
+        message: "something went wrong while fetching the details",
+        severity: "failure",
+      });
       console.log({ ERROR: error });
     }
   };
@@ -154,8 +184,37 @@ function CreatorHome() {
           handleCreatorDetailsEdit={handleCreatorDetailsEdit}
           errorMessages={errorMessages}
           setErrorMessages={setErrorMessages}
+          isDataFetching={isSavingCreator}
+          showEditModal={showEditModal}
         />
       ) : null}
+      <Snackbar
+        open={alertMessageDetails.showMessage}
+        autoHideDuration={4000}
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
+        onClose={() => {
+          setAlertMessageDetails({
+            showMessage: false,
+            message: "",
+            severity: "",
+          });
+        }}
+      >
+        <Alert
+          onClose={() => {
+            setAlertMessageDetails({
+              showMessage: false,
+              message: "",
+              severity: "",
+            });
+          }}
+          severity={alertMessageDetails?.severity || "success"}
+          variant="filled"
+          sx={{ width: "100%" }}
+        >
+          {alertMessageDetails.message}
+        </Alert>
+      </Snackbar>
     </div>
   );
 }
