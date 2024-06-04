@@ -53,6 +53,7 @@ function CreatorHome() {
     } catch (error) {}
   };
   const getUserDetails = async () => {
+    setUserDetails([]);
     setIsDataFetching(true);
     try {
       const url = `https://gorest.co.in/public/v2/users?per_page=${itemsPerPage}`;
@@ -64,6 +65,7 @@ function CreatorHome() {
       setIsDataFetching(false);
     } catch (error) {
       console.log({ error });
+      setUserDetails([]);
     }
   };
   const deleteUser = async (userId) => {

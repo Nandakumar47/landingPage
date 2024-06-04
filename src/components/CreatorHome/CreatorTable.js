@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState } from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -6,8 +6,9 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { Button, IconButton, Skeleton } from "@mui/material";
+import { IconButton, Skeleton } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
+import DeleteDialog from "./DeleteDialog";
 function capitalizeFirstLetter(string) {
   if (!string) return "";
   return string.charAt(0).toUpperCase() + string.slice(1);
@@ -15,6 +16,12 @@ function capitalizeFirstLetter(string) {
 
 export default function CreatorTable(props) {
   const { userDetails, deleteUser, onClickOfEdit, isDataFetching } = props;
+  const [showDeleteDialog, setShowDeleteDialog] = useState(false);
+  const [userDetailsToDelete, setUserDetailsToDelete] = useState({});
+  const handleDeleteDialogClose = () => {
+    setShowDeleteDialog(false);
+    setUserDetailsToDelete({});
+  };
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -69,7 +76,13 @@ export default function CreatorTable(props) {
                       </button>
                       <IconButton
                         aria-label="delete"
-                        onClick={() => deleteUser(row.id)}
+                        onClick={() => {
+                          setUserDetailsToDelete({
+                            id: row?.id,
+                            name: row.name,
+                          });
+                          setShowDeleteDialog(true);
+                        }}
                       >
                         <DeleteIcon />
                       </IconButton>
@@ -80,6 +93,18 @@ export default function CreatorTable(props) {
             : null}
         </TableBody>
       </Table>
+      {showDeleteDialog ? (
+        <DeleteDialog
+          open={showDeleteDialog}
+          userName={userDetailsToDelete.name}
+          handleClose={handleDeleteDialogClose}
+          handleProceed={() => {
+            handleDeleteDialogClose();
+
+            deleteUser(userDetailsToDelete.id);
+          }}
+        />
+      ) : null}
       {isDataFetching && (
         <Skeleton
           animation="wave"
