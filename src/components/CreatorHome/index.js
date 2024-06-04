@@ -21,7 +21,6 @@ function CreatorHome() {
   const saveCreator = async () => {
     try {
       const url = `https://gorest.co.in/public/v2/users?email=${creatorDetails.email}&name=${creatorDetails.name}&gender=${creatorDetails.gender}&status=${creatorDetails.status}`;
-      debugger;
       const response = await fetch(url, {
         method: "POST",
         headers: {
