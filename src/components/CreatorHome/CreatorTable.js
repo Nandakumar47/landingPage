@@ -116,14 +116,6 @@ export default function CreatorTable(props) {
           }}
         />
       ) : null}
-      {/* {isDataFetching && (
-        <Skeleton
-          animation="wave"
-          variant="rectangular"
-          width="100%"
-          height={400}
-        />
-      )} */}
     </TableContainer>
   );
 }
